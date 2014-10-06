@@ -1,0 +1,47 @@
+/* --------------------------------------------------
+:: Imports
+-------------------------------------------------- */
+//@phone-layout:testme();
+//@phone-layout:testme();
+// @phone-layout:phonelayout();
+// @tablet-layout:tabletlayout();
+
+@import "variables.less";//variables should be first
+
+@import "base/normalize.less";
+@import "base/mm.normalize.less";
+@import "base/mixins.less";
+
+@import "components/animations.less";
+@import "components/buttons.less";
+@import "components/font-icons.less";
+@import "components/forms.less";
+@import "components/grid.less";
+@import "components/alerts.less";
+@import "components/modals.less";
+@import "components/sprites.less";
+@import "components/typography.less";
+@import "components/spinner.less";
+@import "components/util.less";
+@import "components/loader.less";//this can be commented if we are doing server side ui rendering
+
+//after dev the layouts will be included here instead of directly in the html
+@import "layouts/_base";
+@import "layouts/phone3.less";
+//@import "layouts/tablet1.less";
+@import "home.less";
+@import "product.list.less";
+@import "product.support.less";
+@import "product.detail.less";
+@import "bed.category.less";
+@import "static.pages.less";
+@import "locations.less";
+@import "cart.less";
+@import "checkout.login.less";
+@import "checkout.less";
+@import "contact.less";
+@import "order.status.less";
+@import "current.specials.less";
+@import "configurator.less";
+@import "landing.pages.less";
+//@import @tablet-layout;

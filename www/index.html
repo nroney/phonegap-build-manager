@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MMGap</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/fonts/flaticon.css"> 
+
+  </head>
+  <body>
+    
+ <div class="container">
+            <menu></menu>
+        <div id="inner">
+            <header class="header-blur">
+                <div class="header-shadow"></div>
+            </header>
+            <div id="contentWrap">
+                <div id="topMargin"></div>
+                <div id="content">
+                </div>
+            </div>
+            <footer></footer>
+        </div>
+</div>
+
+<!--templates --> 
+<script id="tmpl-header" type="x-jquery-tmpl">
+    <span id="pageTitle"></span>
+    <a href="/" class="logo"></a>
+</script>
+
+
+<script id="tmpl-header-nav" type="x-jquery-tmpl">
+    <button class="left arrow left-nav" data-vin="view-home" data-sd="sr">
+        <div class="header-label">Back</div>
+    </button>
+    <span id="pageTitle"></span>
+    <a href="/" class="logo"></a>
+</script>
+
+<script id="tmpl-index" type="x-jquery-tmpl">
+<div class="template-content">
+  <p>test</p>
+</div>  
+</script>
+
+<script id="tmpl-footer" type="x-jquery-tmpl">
+    <div class="footer-shadow"></div>
+    <div class="row">
+    </div>
+</script>
+
+<script id="tmpl-login" type="x-jquery-tmpl">
+    <input type="text" placeholder="E-mail" />
+    <input type="text" placeholder="Password" />
+</script>
+
+<script id="tmpl-main" type="x-jquery-tmpl">
+	<div class="app-list">
+  <ul>
+{{each(i, app) apps.all}}
+	<li data-link="${app.link}" data-appId="${app.id}">
+      <img src="https://build.phonegap.com/api/v1/apps/${app.id}/icon?access_token=">
+      <h3>${app.title}</h3>
+      <p>Lorem ipsum dolor sit amet...</p>
+    </li>
+{{/each}}
+
+  </ul>
+</div>
+</script>
+
+
+    <!-- NPM MODULES -->
+    
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/json2/lib/JSON2/static/json2.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    
+    <!--SCRIPTS-->
+    <script src="js/app.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/libs/bootstrap.js"></script>
+    <script src="js/libs/bootstrap.min.js"></script>
+    <script src="js/libs/jquery-1.11.1.min.js"></script>
+    <script src="js/libs/jquery.tmpl-1.0.0-beta.min.js"></script>
+    <script src="js/libs/underscore-min.js"></script>
+    <script src="js/views/footer.view.js"></script>
+    <script src="js/views/header.view.js"></script>
+    <script src="js/views/headerNav.view.js"></script>
+    <script src="js/views/index.view.js"></script>
+    <script src="js/views/login.view.js"></script>
+    <script src="js/views/main.view.js"></script>
+    <script src="js/models/global.model.js"></script>
+    <!--SCRIPTS END-->
+    
+  </body>
+</html>
