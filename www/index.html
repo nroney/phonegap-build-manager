@@ -66,10 +66,59 @@
 	<div class="app-list">
   <ul>
 {{each(i, app) apps.all}}
-	<li data-link="${app.link}" data-appId="${app.id}">
-      <img src="https://build.phonegap.com/api/v1/apps/${app.id}/icon?access_token=">
+	<li data-link="${app.link}" class="app-list-item" data-appId="${app.id}">
+      <img src="images/icons/icon-72.png">
       <h3>${app.title}</h3>
       <p>Lorem ipsum dolor sit amet...</p>
+    </li>
+    <li class="app-info-container">
+        <div class="app-details-box">
+			<ul class="details-box-list">
+				<li>App Id</li>
+				<li><span id="appId"></span></li>
+				<li>Version </li>
+				<li><span id="version"></span></li>
+				<li>PhoneGap</li>
+				<li><span id="phonegap"></span></li>
+				<li>Owned By</li>
+				<li><span id="owned"></span></li>
+				<li>Source</li>
+				<li><span id="source"></span></li>
+			</ul>
+
+			<ul class="app-options">
+			<li>
+			<h3>Hydration</h3>
+				<div class="onoffswitch">
+					<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="hydrationSwitch${app.id}">
+					<label class="onoffswitch-label" for="hydrationSwitch${app.id}">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+					</label>
+				</div>
+			</li>
+			<li>
+			<h3>Debug</h3>
+				<div class="onoffswitch">
+					<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="debugSwitch${app.id}">
+					<label class="onoffswitch-label" for="debugSwitch${app.id}">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+					</label>
+				</div>
+			</li>
+			<li>
+			<h3>Private</h3>
+				<div class="onoffswitch">
+					<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="privateSwitch${app.id}">
+					<label class="onoffswitch-label" for="privateSwitch${app.id}">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+					</label>
+				</div>
+			</li>
+			</ul>
+        </div>
     </li>
 {{/each}}
 

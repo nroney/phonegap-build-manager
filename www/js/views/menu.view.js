@@ -15,7 +15,7 @@ MenuView = Backbone.View.extend({
 
     events: {
         'click a': 'menuToggle',
-        'click .hassub': 'subToggle',
+        'click .hassub': 'subToggle'
     },
                                 
     menuToggle: function (aEvent) {

@@ -15,12 +15,23 @@ MainView = Backbone.View.extend({
 	},
 
 	getFullAppInfo: function(e){
-		var appId = e.target.dataset.appid;
+		var appId = e.currentTarget.dataset.appid;
 
 		$.get("https://build.phonegap.com/api/v1/apps/"+appId+"?access_token=" + localStorage.accessToken, function (data) {
-			console.log(data);
-		});
+			//new AppDetailView();
+			$('#appId').html(data.id);
+			$('#version').html(data.version);
+			$('#phonegap').html(data.phonegap_version);
+			$('#owned').html(data.role);
+			$('#source').html(data.repo);
+			$('#branch').html();
+			$('#commit').html();
+			$('#lastBuild').html();
 
+			$('#hydrationSwitch'+data.id).prop('checked', data.hydrates);
+			$('#debugSwitch'+data.id).prop('checked', data.debug);
+			$('#privateSwitch'+data.id).prop('checked', data.private);
+		});
 	},
 
 	testLoader: function (e) {

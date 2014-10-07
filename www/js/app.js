@@ -21,7 +21,7 @@ window.app = {
 
     loadMenuHeader: function () {
         new HeaderView();
-        new MenuView();
+        //new MenuView();
     },
 
     loadNavHeader: function () {
