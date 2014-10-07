@@ -235,6 +235,21 @@ header button.right.arrow {
 	background: #F2994B;
 }
 
+.btn {
+	margin-bottom: 0;
+	font-size: 12px;
+	line-height: 20px;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	border: 1px solid #bbb;
+	background-image: linear-gradient(to bottom,#f0f0f0,#d5d5d5);
+	background-repeat: repeat-x;
+	border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
+	width: 100px;
+
+}
+
 /* -------- APP LIST------------ */
 .app-list-div {
 	margin: 20px;
@@ -290,6 +305,14 @@ header button.right.arrow {
 
 .app-options {
 	margin-top: 10px;
+}
+
+.app-controls {
+	margin-top: 14px;
+}
+
+.app-controls li {
+	display: inline;
 }
 
 
