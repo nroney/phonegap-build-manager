@@ -64,11 +64,11 @@
 
 <script id="tmpl-main" type="x-jquery-tmpl">
 	<div class="app-list">
-  <ul>
+  <ul class="app-main-list">
 {{each(i, app) apps.all}}
 	<li data-link="${app.link}" class="app-list-item" data-appId="${app.id}">
       <img src="images/icons/icon-72.png">
-      <h3>${app.title}</h3>
+      <h3>Test App</h3>
       <p>Lorem ipsum dolor sit amet...</p>
     </li>
     <li class="app-info-container">
@@ -86,9 +86,10 @@
 				<li><span id="source"></span></li>
 			</ul>
 			<ul class="app-controls">
-				<li><button class="btn" type="button">Update Code</button></li>
-				<li><button class="btn" type="button">Rebuild All</button></li>
-				<li><button class="btn" type="button">Debug</button></li>
+				<li><a class="btn pull-latest" data-appId="${app.id}">Update Code</a></li>
+				<li><a class="btn">Rebuild All</a></li>
+				<li><a class="btn">Debug</a></li>
+				<li><a href="" target="_blank" id="installButton${app.id}" class="btn">Install</a></li>
 			</ul>
 
 			<ul class="app-options">
@@ -122,6 +123,7 @@
 					</label>
 				</div>
 			</li>
+
 			</ul>
         </div>
     </li>

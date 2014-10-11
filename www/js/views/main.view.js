@@ -2,7 +2,9 @@ MainView = Backbone.View.extend({
 
 	events: {
 		'click p': 'goto',
-		'click .app-list ul li': 'getFullAppInfo'
+		'click .app-list ul li': 'getFullAppInfo',
+		'click .install-button': 'installApp',
+		'click .pull-latest': 'pullLatest'
 	},
 
 	initialize: function () {
@@ -12,6 +14,17 @@ MainView = Backbone.View.extend({
 		that.afterRender();
 
 		app.loadNavHeader();
+	},
+	pullLatest: function(e){
+		var appId = e.currentTarget.dataset.appid;
+		$.post( "http://108.59.252.244/mad/phonegap/update.php", { appId: appId, authToken: localStorage.accessToken }, function( data ) {
+			console.log(data);
+		});
+	},
+
+	installApp: function(e){
+		var installUrl = e.currentTarget.dataset.href;
+		window.location = installUrl;
 	},
 
 	getFullAppInfo: function(e){
@@ -31,6 +44,7 @@ MainView = Backbone.View.extend({
 			$('#hydrationSwitch'+data.id).prop('checked', data.hydrates);
 			$('#debugSwitch'+data.id).prop('checked', data.debug);
 			$('#privateSwitch'+data.id).prop('checked', data.private);
+			$('#installButton'+data.id).attr('href', data.install_url);
 		});
 	},
 
