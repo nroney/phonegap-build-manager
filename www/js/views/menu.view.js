@@ -10,7 +10,13 @@ MenuView = Backbone.View.extend({
     },
 
     render: function () {
-        $('#tmpl-menu').tmpl({}).appendTo(this.el);
+		var template = _.template(
+			$( "script.tmpl-menu" ).html()
+		);
+
+		$("menu").html(
+			template()
+		);
     },
 
     events: {

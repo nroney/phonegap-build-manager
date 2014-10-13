@@ -1,20 +1,22 @@
 HeaderView = Backbone.View.extend({
-    el: $("header"),
+	el: $("header"),
+	events: {
+		'click #menuToggle': 'menuToggle'
+	},
+	initialize: function () {
+		this.render();
+	},
+	render: function () {
+		var template = _.template(
+			$("script.tmpl-header").html()
+		);
 
-    events: {
-        'click #menuToggle': 'menuToggle'
-    },
-
-    initialize: function () {
-        this.render();
-    },
-
-    render: function () {
-        $('#tmpl-header').tmpl({}).appendTo(this.el);
-    },
-
-    menuToggle: function (aEvent) {
-        app.menuToggle(aEvent);
-        return false;
-    }
+		$("header").html(
+			template()
+		);
+	},
+	menuToggle: function (aEvent) {
+		app.menuToggle(aEvent);
+		return false;
+	}
 });

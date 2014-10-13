@@ -1,162 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MMGap</title>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>MMGap</title>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="css/app.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/fonts/flaticon.css"> 
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="css/app.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/fonts/flaticon.css">
+</head>
+<body>
 
-  </head>
-  <body>
-    
- <div class="container">
-            <menu></menu>
-        <div id="inner">
-            <header class="header-blur">
-                <div class="header-shadow"></div>
-            </header>
-            <div id="contentWrap">
-                <div id="topMargin"></div>
-                <div id="content">
-                </div>
-            </div>
-            <footer></footer>
-        </div>
+<div class="container">
+	<menu></menu>
+	<div id="inner">
+		<header class="header-blur">
+			<div class="header-shadow"></div>
+		</header>
+		<div id="contentWrap">
+			<div id="topMargin"></div>
+			<div id="content">
+			</div>
+		</div>
+		<footer></footer>
+	</div>
 </div>
 
-<!--templates --> 
-<script id="tmpl-header" type="x-jquery-tmpl">
-    <span id="pageTitle"></span>
-    <a href="/" class="logo"></a>
+<!--templates -->
+<script class="tmpl-header" type="text/template">
+	<span id="pageTitle"></span>
+	<a href="/" class="logo"></a>
 </script>
 
-
-<script id="tmpl-header-nav" type="x-jquery-tmpl">
-    <button class="left arrow left-nav" data-vin="view-home" data-sd="sr">
-        <div class="header-label">Back</div>
-    </button>
-    <span id="pageTitle"></span>
-    <a href="/" class="logo"></a>
+<script class="tmpl-header-nav" type="text/template">
+	<button class="left arrow left-nav" data-vin="view-home" data-sd="sr">
+		<div class="header-label">Back</div>
+	</button>
+	<span id="pageTitle"></span>
+	<a href="/" class="logo"></a>
 </script>
 
-<script id="tmpl-index" type="x-jquery-tmpl">
-<div class="template-content">
-  <p>test</p>
-</div>  
+<script class="tmpl-index" type="text/template">
+	<div class="template-content">
+		<p>test</p>
+	</div>
 </script>
 
-<script id="tmpl-footer" type="x-jquery-tmpl">
-    <div class="footer-shadow"></div>
-    <div class="row">
-    </div>
+<script class="tmpl-footer" type="text/template">
+	<div class="footer-shadow"></div>
+	<div class="row">
+	</div>
 </script>
 
-<script id="tmpl-login" type="x-jquery-tmpl">
-    <input type="text" placeholder="E-mail" />
-    <input type="text" placeholder="Password" />
+<script class="tmpl-login" type="text/template">
+	<input type="text" placeholder="E-mail"/>
+	<input type="text" placeholder="Password"/>
 </script>
 
-<script id="tmpl-main" type="x-jquery-tmpl">
+<script class="tmpl-main" type="text/template">
 	<div class="app-list">
-  <ul class="app-main-list">
-{{each(i, app) apps.all}}
-	<li data-link="${app.link}" class="app-list-item" data-appId="${app.id}">
-      <img src="images/icons/icon-72.png">
-      <h3>Test App</h3>
-      <p>Lorem ipsum dolor sit amet...</p>
-    </li>
-    <li class="app-info-container">
-        <div class="app-details-box">
-			<ul class="details-box-list">
-				<li>App Id</li>
-				<li><span id="appId"></span></li>
-				<li>Version </li>
-				<li><span id="version"></span></li>
-				<li>PhoneGap</li>
-				<li><span id="phonegap"></span></li>
-				<li>Owned By</li>
-				<li><span id="owned"></span></li>
-				<li>Source</li>
-				<li><span id="source"></span></li>
-			</ul>
-			<ul class="app-controls">
-				<li><a class="btn pull-latest" data-appId="${app.id}">Update Code</a></li>
-				<li><a class="btn">Rebuild All</a></li>
-				<li><a class="btn">Debug</a></li>
-				<li><a href="" target="_blank" id="installButton${app.id}" class="btn">Install</a></li>
-			</ul>
+		<ul class="app-main-list">
+<%_.each(apps.all, function(app){%>
 
-			<ul class="app-options">
-			<li>
-			<h3>Hydration</h3>
-				<div class="onoffswitch">
-					<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="hydrationSwitch${app.id}">
-					<label class="onoffswitch-label" for="hydrationSwitch${app.id}">
-						<span class="onoffswitch-inner"></span>
-						<span class="onoffswitch-switch"></span>
-					</label>
+			<li data-link="<%= app.link %>" class="app-list-item" data-appId="<%= app.id %>">
+				<img src="images/icons/icon-72.png">
+
+				<h3>Test App</h3>
+
+				<p>Lorem ipsum dolor sit amet...</p>
+			</li>
+			<li class="app-info-container">
+				<div class="app-details-box">
+					<ul class="details-box-list">
+						<li>App Id</li>
+						<li><span id="appId"></span></li>
+						<li>Version</li>
+						<li><span id="version"></span></li>
+						<li>PhoneGap</li>
+						<li><span id="phonegap"></span></li>
+						<li>Owned By</li>
+						<li><span id="owned"></span></li>
+						<li>Source</li>
+						<li><span id="source"></span></li>
+					</ul>
+					<ul class="app-controls">
+						<li><a class="btn btn-large pull-latest" data-appId="<%= app.id %>">Update Code</a></li>
+						<li><a class="btn btn-large">Rebuild All</a></li>
+						<li><a class="btn btn-large">Debug</a></li>
+						<li><a href="" target="_blank" id="installButton<%= app.id %>" class="btn btn-large">Install</a>
+						</li>
+					</ul>
+
+					<ul class="app-options">
+						<li>
+							<h3>Hydration</h3>
+
+							<div class="onoffswitch">
+								<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox change-value"
+									   data-property="hydrates" id="hydrationSwitch<%= app.id %>">
+								<label class="onoffswitch-label" for="hydrationSwitch<%= app.id %>">
+									<span class="onoffswitch-inner"></span>
+									<span class="onoffswitch-switch"></span>
+								</label>
+							</div>
+						</li>
+						<li>
+							<h3>Debug</h3>
+
+							<div class="onoffswitch">
+								<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox change-value"
+									   data-property="debug" id="debugSwitch<%= app.id %>">
+								<label class="onoffswitch-label" for="debugSwitch<%= app.id %>">
+									<span class="onoffswitch-inner"></span>
+									<span class="onoffswitch-switch"></span>
+								</label>
+							</div>
+						</li>
+						<li>
+							<h3>Private</h3>
+
+							<div class="onoffswitch">
+								<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox change-value"
+									   data-property="private" id="privateSwitch<%= app.id %>">
+								<label class="onoffswitch-label" for="privateSwitch<%= app.id %>">
+									<span class="onoffswitch-inner"></span>
+									<span class="onoffswitch-switch"></span>
+								</label>
+							</div>
+						</li>
+
+					</ul>
 				</div>
 			</li>
-			<li>
-			<h3>Debug</h3>
-				<div class="onoffswitch">
-					<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="debugSwitch${app.id}">
-					<label class="onoffswitch-label" for="debugSwitch${app.id}">
-						<span class="onoffswitch-inner"></span>
-						<span class="onoffswitch-switch"></span>
-					</label>
-				</div>
-			</li>
-			<li>
-			<h3>Private</h3>
-				<div class="onoffswitch">
-					<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="privateSwitch${app.id}">
-					<label class="onoffswitch-label" for="privateSwitch${app.id}">
-						<span class="onoffswitch-inner"></span>
-						<span class="onoffswitch-switch"></span>
-					</label>
-				</div>
-			</li>
 
-			</ul>
-        </div>
-    </li>
-{{/each}}
-
-  </ul>
-</div>
+			<%});%>
+			  </ul>
+	</div>
 </script>
 
+<!-- NPM MODULES -->
 
-    <!-- NPM MODULES -->
-    
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/json2/lib/JSON2/static/json2.js"></script>
-    <script src="node_modules/underscore/underscore-min.js"></script>
-    <script src="node_modules/backbone/backbone-min.js"></script>
-    
-    <!--SCRIPTS-->
-    <script src="js/app.js"></script>
-    <script src="js/router.js"></script>
-    <script src="js/libs/bootstrap.js"></script>
-    <script src="js/libs/bootstrap.min.js"></script>
-    <script src="js/libs/jquery-1.11.1.min.js"></script>
-    <script src="js/libs/jquery.tmpl-1.0.0-beta.min.js"></script>
-    <script src="js/libs/underscore-min.js"></script>
-    <script src="js/views/footer.view.js"></script>
-    <script src="js/views/header.view.js"></script>
-    <script src="js/views/headerNav.view.js"></script>
-    <script src="js/views/index.view.js"></script>
-    <script src="js/views/login.view.js"></script>
-    <script src="js/views/main.view.js"></script>
-    <script src="js/models/global.model.js"></script>
-    <!--SCRIPTS END-->
-    
-  </body>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/json2/lib/JSON2/static/json2.js"></script>
+<script src="node_modules/underscore/underscore-min.js"></script>
+<script src="node_modules/backbone/backbone-min.js"></script>
+
+<!--SCRIPTS-->
+<script src="js/app.js"></script>
+<script src="js/router.js"></script>
+<script src="js/libs/bootstrap.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/libs/jquery-1.11.1.min.js"></script>
+<script src="js/libs/jquery.tmpl-1.0.0-beta.min.js"></script>
+<script src="js/libs/underscore-min.js"></script>
+<script src="js/views/footer.view.js"></script>
+<script src="js/views/header.view.js"></script>
+<script src="js/views/headerNav.view.js"></script>
+<script src="js/views/index.view.js"></script>
+<script src="js/views/login.view.js"></script>
+<script src="js/views/main.view.js"></script>
+<script src="js/models/global.model.js"></script>
+<!--SCRIPTS END-->
+
+</body>
 </html>

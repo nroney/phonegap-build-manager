@@ -1,30 +1,31 @@
 LoginView = Backbone.View.extend({
-
+	el: 'body',
 	events: {
 		'click p': 'goto'
 	},
 
 	initialize: function () {
-		var that = this;
+		var _this = this;
 
-		that.render();
+		_this.render();
 		app.afterRender();
-		that.afterRender();
+		_this.afterRender();
 
-		/*GlobalModel('privacypolicy', function (model) {
-		 that.render(model);
-		 app.afterRender({linkifyPhone: true});
-		 });*/
 		app.loadNavHeader();
 	},
 
 	testLoader: function (e) {
 		app.showLoader(e);
 	},
-	render: function (aModel) {
-		var lHtml = $('#tmpl-login').tmpl();
+	render: function () {
 
-		this.$el.html(lHtml);
+		var template = _.template(
+			$( "script.tmpl-login" ).html()
+		);
+
+		$("#content").html(
+			template()
+		);
 	},
 	afterRender: function () {
 		app.changePageTitle('Login');

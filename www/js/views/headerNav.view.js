@@ -9,12 +9,20 @@ HeaderNavView = Backbone.View.extend({
         this.render();
     },
 
-    leftNavAction: function(aEvent){
+    leftNavAction: function(){
         app.router.navigate("/", {trigger: true});
     },
 
     render: function () {
-        $('#tmpl-header-nav').tmpl({}).appendTo(this.el);
-    },
+
+		var template = _.template(
+			$( "script.tmpl-header-nav" ).html()
+		);
+
+		$(".header-shadow").html(
+			template()
+		);
+
+    }
 
 });

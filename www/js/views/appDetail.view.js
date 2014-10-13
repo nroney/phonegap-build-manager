@@ -8,8 +8,14 @@ AppDetailView = Backbone.View.extend({
 	},
 
 	render: function () {
-		var lHtml = $('#tmpl-footer').tmpl();
-		this.$el.html(lHtml);
+
+		var template = _.template(
+			$( "script.tmpl-index" ).html()
+		);
+
+		$("header").html(
+			template()
+		);
 	}
 
 });
