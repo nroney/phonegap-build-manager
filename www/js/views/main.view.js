@@ -17,9 +17,16 @@ MainView = Backbone.View.extend({
 	},
 	pullLatest: function(e){
 		var appId = e.currentTarget.dataset.appid;
-		$.post( "http://108.59.252.244/mad/phonegap/update.php", { appId: appId, authToken: localStorage.accessToken }, function( data ) {
-			console.log(data);
-		});
+		
+		$.ajax({
+			  type: "GET",
+			  url: "http://108.59.252.244/mad/phonegap/update.php",
+			  cache: false,
+			  //data: { appId: appId, authToken: localStorage.accessToken },
+			  success: function(){
+			  }
+});
+		
 	},
 
 	installApp: function(e){
