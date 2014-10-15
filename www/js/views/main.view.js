@@ -5,7 +5,8 @@ MainView = Backbone.View.extend({
 		'click .app-list ul li': 'getFullAppInfo',
 		'click .install-button': 'installApp',
 		'click .pull-latest': 'pullLatest',
-		'change .change-value': 'changeValue'
+		'change .change-value': 'changeValue',
+		'click .app-list-item': 'toggleAppConsole'
 	},
 
 	initialize: function () {
@@ -14,13 +15,20 @@ MainView = Backbone.View.extend({
 		app.afterRender();
 		_this.afterRender();
 
+		new HeaderView();
+		new FooterView();
 		app.loadNavHeader();
 	},
 	pullLatest: function (e) {
 		var appId = e.currentTarget.dataset.appid;
-		$.post("http://108.59.252.244/mad/phonegap/update.php", { appId: appId, authToken: localStorage.accessToken }, function (data) {
+		$.post(app.apiUrl+'update.php', { appId: appId, authToken: localStorage.accessToken }, function (data) {
 			console.log(data);
 		});
+		return false;
+	},
+	toggleAppConsole: function(e){
+		$(e.currentTarget).next().slideToggle();
+		return false;
 	},
 	changeValue: function (e) {
 		var property = e.currentTarget.dataset.property,
@@ -34,14 +42,17 @@ MainView = Backbone.View.extend({
 			changeValue = 'false';
 		}
 
-		$.post("http://108.59.252.244/mad/phonegap/change.php", { appId: appId, authToken: localStorage.accessToken, changed: property, changedValue: changeValue  }, function (data) {
+		$.post(app.apiUrl+'change.php', { appId: appId, authToken: localStorage.accessToken, changed: property, changedValue: changeValue  }, function (data) {
 			console.log(data);
 		});
+		return false;
 	},
 
 	installApp: function (e) {
 		var installUrl = e.currentTarget.dataset.href;
 		window.location = installUrl;
+
+		return false;
 	},
 
 	getFullAppInfo: function (e) {
@@ -63,7 +74,11 @@ MainView = Backbone.View.extend({
 			$('#installButton' + data.id).attr('href', data.install_url);
 
 			localStorage.setItem('selectedAppId', data.id);
+			if(!app.isAdmin){
+				$('.admin-only').hide();
+			}
 		});
+		return false;
 	},
 
 	testLoader: function (e) {

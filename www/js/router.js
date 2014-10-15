@@ -6,7 +6,9 @@ $(function () {
 			'/': 'index',
 			'!/': 'index',
 			'!/login': 'login',
-			'!/main': 'main'
+			'!/main': 'main',
+			'!/plugins': 'plugins',
+			'!/collaborators': 'collaborators'
 		},
 		initialize: function () {
 			//Backbone.history.start();
@@ -21,9 +23,16 @@ $(function () {
 			new LoginView({ el: this.el });
 		},
 		main: function () {
-
 			app.preRoute(this.el);
 			new MainView({ el: this.el });
+		},
+		plugins: function () {
+			app.preRoute(this.el);
+			new PluginsView({ el: this.el });
+		},
+		collaborators: function () {
+			app.preRoute(this.el);
+			new CollaboratorsView({ el: this.el });
 		}
 	});
 	app.router = new app.router();

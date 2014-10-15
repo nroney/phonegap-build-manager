@@ -22,6 +22,9 @@
 		</header>
 		<div id="contentWrap">
 			<div id="topMargin"></div>
+			<div class="popup">
+
+			</div>
 			<div id="content">
 			</div>
 		</div>
@@ -31,6 +34,11 @@
 
 <!--templates -->
 <script class="tmpl-header" type="text/template">
+	<a href="" id="menuToggle">
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	</a>
 	<span id="pageTitle"></span>
 	<a href="/" class="logo"></a>
 </script>
@@ -56,8 +64,20 @@
 </script>
 
 <script class="tmpl-login" type="text/template">
-	<input type="text" placeholder="E-mail"/>
-	<input type="text" placeholder="Password"/>
+	<div class="page-container">
+		<div class="login-container">
+			<input type="email" class="login-input" id="loginUsername" placeholder="E-mail"/>
+			<span class="form-divider"></span>
+			<input type="password" class="login-input" id="loginPassword" placeholder="Password"/>
+		</div>
+	</div>
+	<a href="#" class="btn btn-large login-button">Login</a>
+</script>
+
+<script class="tmpl-plugins" type="text/template">
+	<div class="page-container">
+			<p>Plugins</p>
+	</div>
 </script>
 
 <script class="tmpl-main" type="text/template">
@@ -75,29 +95,26 @@
 			<li class="app-info-container">
 				<div class="app-details-box">
 					<ul class="details-box-list">
-						<li>App Id</li>
+						<li>App Id:</li>
 						<li><span id="appId"></span></li>
-						<li>Version</li>
+						<li>Version:</li>
 						<li><span id="version"></span></li>
-						<li>PhoneGap</li>
-						<li><span id="phonegap"></span></li>
+						<li>PhoneGap:</li>
+						<!--<li><span id="phonegap"></span></li>
 						<li>Owned By</li>
 						<li><span id="owned"></span></li>
 						<li>Source</li>
-						<li><span id="source"></span></li>
+						<li><span id="source"></span></li>-->
 					</ul>
-					<ul class="app-controls">
-						<li><a class="btn btn-large pull-latest" data-appId="<%= app.id %>">Update Code</a></li>
-						<li><a class="btn btn-large">Rebuild All</a></li>
-						<li><a class="btn btn-large">Debug</a></li>
-						<li><a href="" target="_blank" id="installButton<%= app.id %>" class="btn btn-large">Install</a>
-						</li>
-					</ul>
+					<!--<ul class="app-extended-info">
+						<li><a href="#" class="btn btn-small view-collaborators admin-only" data-appId="<%= app.id %>">Collaborators</a></li>
+						<li><a href="#" class="btn btn-small view-plugins admin-only">Plugins</a></li>
+						<li><i class="icon"></i></li>
+					</ul>-->
 
-					<ul class="app-options">
+					<ul class="app-options admin-only">
 						<li>
 							<h3>Hydration</h3>
-
 							<div class="onoffswitch">
 								<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox change-value"
 									   data-property="hydrates" id="hydrationSwitch<%= app.id %>">
@@ -133,6 +150,13 @@
 						</li>
 
 					</ul>
+					<ul class="app-controls">
+						<li><a href="#" class="btn btn-large pull-latest admin-only" data-appId="<%= app.id %>">Update Code</a></li>
+						<li><a href="#" class="btn btn-large admin-only">Rebuild All</a></li>
+						<li><a href="#" class="btn btn-large">Debug</a></li>
+						<li><a href="" target="_blank" id="installButton<%= app.id %>" class="btn btn-large">Install</a>
+						</li>
+					</ul>
 				</div>
 			</li>
 
@@ -162,6 +186,8 @@
 <script src="js/views/index.view.js"></script>
 <script src="js/views/login.view.js"></script>
 <script src="js/views/main.view.js"></script>
+<script src="js/views/plugins.view.js"></script>
+<script src="js/views/collaborators.view.js"></script>
 <script src="js/models/global.model.js"></script>
 <!--SCRIPTS END-->
 

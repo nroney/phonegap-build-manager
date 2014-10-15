@@ -1,7 +1,8 @@
 LoginView = Backbone.View.extend({
 	el: 'body',
 	events: {
-		'click p': 'goto'
+		'click .login-button': 'login'
+
 	},
 
 	initialize: function () {
@@ -12,6 +13,14 @@ LoginView = Backbone.View.extend({
 		_this.afterRender();
 
 		app.loadNavHeader();
+	},
+
+	login: function(e){
+		var username = $('#loginUsername').val(),
+			password = $('#loginPassword').val();
+
+		app.router.navigate("!/main", {trigger: true});
+		return false;
 	},
 
 	testLoader: function (e) {

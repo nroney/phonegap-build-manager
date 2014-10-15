@@ -6,6 +6,7 @@ IndexView = Backbone.View.extend({
 		that.afterRender();
 
 		app.loadMenuHeader();
+
 		new FooterView();
 	},
 	render: function () {

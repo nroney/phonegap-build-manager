@@ -1,5 +1,8 @@
 window.app = {
 
+	isAdmin: true,
+	apiUrl: 'http://108.59.252.244/mad/phonegap/',
+
     changePageTitle: function (aTitle){
         $('#pageTitle').text(aTitle);
     },
